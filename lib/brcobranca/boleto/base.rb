@@ -37,7 +37,7 @@ module Brcobranca
       attr_accessor :cedente
       # <b>REQUERIDO</b>: Documento do proprietario da conta corrente (CPF ou CNPJ)
       attr_accessor :documento_cedente
-      # <b>OPCIONAL</b>: Número sequencial utilizado para identificar o boleto
+      # <b>OPCIONAL</b>: Documento para indentificar o boleto
       attr_accessor :numero_documento
       # <b>REQUERIDO</b>: Símbolo da moeda utilizada (R$ no brasil)
       attr_accessor :especie
@@ -79,17 +79,20 @@ module Brcobranca
       attr_accessor :avalista_documento
       # <b>OPCIONAL</b>: Endereço da pessoa que envia o boleto
       attr_accessor :cedente_endereco
+      # <b>OPCIONAL</b>: Número sequencial utilizado para identificar o boleto
+      attr_accessor :nosso_numero
+
 
       # Validações
-      validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :numero_documento, message: 'não pode estar em branco.'
-      validates_numericality_of :convenio, :agencia, :conta_corrente, :numero_documento, message: 'não é um número.', allow_nil: true
+      validates_presence_of :agencia, :conta_corrente, :moeda, :especie_documento, :especie, :aceite, :numero_documento, :nosso_numero, message: 'não pode estar em branco.'
+      validates_numericality_of :convenio, :agencia, :conta_corrente, :nosso_numero, message: 'não é um número.', allow_nil: true
 
       # Nova instancia da classe Base
       # @param [Hash] campos
       def initialize(campos = {})
         padrao = {
           moeda: '9', data_documento: Date.current, data_vencimento: Date.current, quantidade: 1,
-          especie_documento: 'DM', especie: 'R$', aceite: 'S', valor: 0.0,
+          especie_documento: 'DM', especie: 'R$', aceite: 'S', valor: 0.0, numero_documento: '',
           local_pagamento: 'QUALQUER BANCO ATÉ O VENCIMENTO'
         }
 
@@ -138,7 +141,7 @@ module Brcobranca
       # Dígito verificador do nosso número
       # @return [Integer] 1 caracteres numéricos.
       def nosso_numero_dv
-        numero_documento.modulo11
+        nosso_numero.modulo11
       end
 
       # @abstract Deverá ser sobreescrito para cada banco.

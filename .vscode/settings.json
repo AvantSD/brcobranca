@@ -1,0 +1,26 @@
+{
+  "files.exclude": {
+    ".DS_Store": "explorerExcludedFiles",
+    "*.tmproj": "explorerExcludedFiles",
+    "tmtags": "explorerExcludedFiles",
+    "*~": "explorerExcludedFiles",
+    "\\#*": "explorerExcludedFiles",
+    ".\\#*": "explorerExcludedFiles",
+    "*.swp": "explorerExcludedFiles",
+    "*.orig": "explorerExcludedFiles",
+    "coverage": "explorerExcludedFiles",
+    "rdoc": "explorerExcludedFiles",
+    "pkg": "explorerExcludedFiles",
+    "scratch_directory": "explorerExcludedFiles",
+    "tmp": "explorerExcludedFiles",
+    ".yardoc": "explorerExcludedFiles",
+    ".rvmrc": "explorerExcludedFiles",
+    ".idea": "explorerExcludedFiles",
+    "config": "explorerExcludedFiles",
+    "config/*.*": "explorerExcludedFiles",
+    "pkg/*.8": "explorerExcludedFiles",
+    "doc": "explorerExcludedFiles",
+    "doc/*.*": "explorerExcludedFiles",
+    "Gemfile.lock": "explorerExcludedFiles"
+  }
+}
